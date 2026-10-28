@@ -1,0 +1,10 @@
+{
+  "without_derived": {
+    "accuracy": 0.7989,
+    "f1": 0.386
+  },
+  "with_derived": {
+    "accuracy": 0.7988,
+    "f1": 0.3838
+  }
+}

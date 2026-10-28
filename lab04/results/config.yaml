@@ -1,0 +1,15 @@
+dataset: fetch_openml(name='adult', version=2, as_frame=True)
+seed: 42
+test_size: 0.3
+imputer:
+  numeric: median
+  categorical: most_frequent
+clip_percentiles:
+- 1
+- 99
+derived_features:
+- capital_net
+- hours_per_age
+model: LogisticRegression(solver='liblinear', max_iter=1000)
+label_audit_sample_size: 50
+processed_sha256: b72746551ad1a1c82271227f7a805b3f3a68878ad46c30b15acafdcfad68eb82

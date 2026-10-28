@@ -1,0 +1,15 @@
+2026-10-26 16:22:14,594 | [2] Ingestion: row count = 48842, column count = 15
+2026-10-26 16:22:14,643 | [3] Type violations: none
+2026-10-26 16:22:14,643 | [3] Range violations: {'age': 0, 'hours-per-week': 0, 'capital-gain': 0, 'capital-loss': 0}
+2026-10-26 16:22:14,644 | [3] Category violations: none
+2026-10-26 16:22:14,644 | [3] Missing '?': {'workclass': 2799, 'occupation': 2809, 'native-country': 857}
+2026-10-26 16:22:14,672 | [4] Stratified split before cleaning: train=34189, test=14653
+2026-10-26 16:22:14,690 | [4] Dropped 24 exact duplicates from train; test untouched (14653 rows)
+2026-10-26 16:22:14,911 | [5] without_derived: accuracy=0.7989, f1=0.3860
+2026-10-26 16:22:15,144 | [5] with_derived: accuracy=0.7988, f1=0.3838
+2026-10-26 16:22:15,144 | [4] Saved results/preprocessor.joblib
+2026-10-26 16:22:15,179 | [6] Duplicate-conflict groups: 5 (10 rows)
+2026-10-26 16:22:15,179 | [6] 50-row check: 0 rows with impossible values
+2026-10-26 16:22:19,209 | [7] Processed dataset SHA256 = b72746551ad1a1c82271227f7a805b3f3a68878ad46c30b15acafdcfad68eb82 (saved in results/config.yaml)
+2026-10-26 16:22:19,226 | [7] Saved results/data_card.md
+2026-10-26 16:22:19,227 | DONE
