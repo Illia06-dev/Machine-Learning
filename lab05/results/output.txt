@@ -1,0 +1,60 @@
+=== Task 4: gradient check ===
+forward:  ours=4.5114164911  torch=4.5114164911
+d/da ours : [-0.843095, 2.701901, 0.979798, -0.208472, 0.325869]
+d/da torch: [-0.843095, 2.701901, 0.979798, -0.208472, 0.325869]
+d/db ours : [3.054519, 2.455852, 0.395673, -2.147551, 0.044063]
+d/db torch: [3.054519, 2.455852, 0.395673, -2.147551, 0.044063]
+d/dc ours : [2.217135, 2.380122, -1.245375, 2.22698, 0.977035]
+d/dc torch: [2.217135, 2.380122, -1.245375, 2.22698, 0.977035]
+max |ours - torch|     = 0.000e+00
+max |ours - numerical| = 3.757e-10
+PASSED: both differences < 1e-6
+
+=== Task 5: make_moons 2-8-1 ===
+Engine : median 9.027 s | final loss 0.2577 | acc 0.88
+PyTorch: median 0.028 s | final loss 0.2504 | acc 0.89
+PyTorch is 320.1x faster
+
+=== Task 6: autograd graph (grad_fn) ===
+SumBackward0
+  AddmmBackward0
+    AccumulateGrad
+    ReluBackward0
+      AddmmBackward0
+        AccumulateGrad
+        ReluBackward0
+          AddmmBackward0
+            AccumulateGrad
+            TBackward0
+              AccumulateGrad
+        TBackward0
+          AccumulateGrad
+    TBackward0
+      AccumulateGrad
+
+=== torch.fx graph ===
+graph():
+    %input_1 : [num_users=1] = placeholder[target=input]
+    %_0 : [num_users=1] = call_module[target=0](args = (%input_1,), kwargs = {})
+    %_1 : [num_users=1] = call_module[target=1](args = (%_0,), kwargs = {})
+    %_2 : [num_users=1] = call_module[target=2](args = (%_1,), kwargs = {})
+    %_3 : [num_users=1] = call_module[target=3](args = (%_2,), kwargs = {})
+    %_4 : [num_users=1] = call_module[target=4](args = (%_3,), kwargs = {})
+    return _4
+=== eager vs compiled (after warm-up) ===
+torch.compile unavailable (InductorError) -> only jit.trace
+batch     8: eager 0.047 ms | jit.trace 0.039 ms
+batch   512: eager 0.311 ms | jit.trace 0.323 ms
+batch  8192: eager 4.512 ms | jit.trace 4.668 ms
+
+=== tensor inspection ===
+a                    shape=(4096, 4096) dtype=torch.float32 stride=(4096, 1) contiguous=True same_storage=True
+a.t()                shape=(4096, 4096) dtype=torch.float32 stride=(1, 4096) contiguous=False same_storage=True
+a.t().contiguous()   shape=(4096, 4096) dtype=torch.float32 stride=(4096, 1) contiguous=True same_storage=False
+a + 1        (contiguous)     : 10.11 ms
+a.t() + 1    (non-contiguous) : 10.39 ms
+sum(dim=1)   (contiguous)     : 3.17 ms
+sum(dim=1)   (non-contiguous) : 6.93 ms
+.contiguous() copy            : 26.01 ms
+a + a.t().contiguous()        : 13.13 ms
+a + a.t()    (mixed layouts)  : 64.76 ms

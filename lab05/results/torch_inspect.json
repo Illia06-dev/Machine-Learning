@@ -1,0 +1,27 @@
+{
+  "runs": [
+    {
+      "batch": 8,
+      "eager_ms": 0.04699999408330768,
+      "trace_ms": 0.03925000055460259
+    },
+    {
+      "batch": 512,
+      "eager_ms": 0.3108999953838065,
+      "trace_ms": 0.3234499890822917
+    },
+    {
+      "batch": 8192,
+      "eager_ms": 4.5119999995222315,
+      "trace_ms": 4.6677999998792075
+    }
+  ],
+  "contiguous_add_ms": 10.113650001585484,
+  "noncontiguous_add_ms": 10.389249997388106,
+  "contiguous_rowsum_ms": 3.1710999901406467,
+  "noncontiguous_rowsum_ms": 6.9292999905883335,
+  "contiguous_copy_ms": 26.010399997176137,
+  "mixed_contig_ms": 13.130200000887271,
+  "mixed_noncontig_ms": 64.76065000606468,
+  "torch_version": "2.15.0+cpu"
+}
