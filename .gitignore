@@ -22,3 +22,8 @@ mlruns/
 
 # Optional local console transcript; numerical evidence is stored in CSV/JSON.
 lab03/results/run.log
+
+# Model checkpoints (hundreds of MB) and large profiler trace
+*.pt
+*.pt.tmp
+lab06/results/profile/trace.json
