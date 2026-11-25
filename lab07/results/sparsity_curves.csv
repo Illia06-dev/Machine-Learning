@@ -1,0 +1,17 @@
+method,target,sparsity,accuracy
+global,0.0,0.0,0.928
+global,0.25,0.25,0.9276
+global,0.5,0.5,0.927
+global,0.75,0.75,0.9268
+global,0.9,0.9,0.9233
+global,0.95,0.95,0.9135
+layer-wise,0.0,0.0,0.928
+layer-wise,0.25,0.25,0.9275
+layer-wise,0.5,0.5,0.9247
+layer-wise,0.75,0.75,0.9064
+layer-wise,0.9,0.9,0.8464
+layer-wise,0.95,0.95,0.7633
+structured,0.0,0.0,0.928
+structured,0.1,0.0018233387358184765,0.9275
+structured,0.25,0.004862236628849271,0.9249
+structured,0.5,0.009724473257698542,0.9188
